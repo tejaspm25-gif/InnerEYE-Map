@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>InnerEYE | Activities Map</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <!-- Website CSS -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Leaflet JavaScript -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+
+</head>
+
+<body>
+
+  <!-- =====================================
+       INTERACTIVE MAP
+       ===================================== -->
+
+  <div id="map"></div>
+
+
+  <!-- =====================================
+       INNEREYE LOGO AND BRANDING
+       ===================================== -->
+
+  <div id="innereye-brand">
+
+    <img
+      src="https://raw.githubusercontent.com/tejaspm25-gif/InnerEYE-Map/16e5e77c22e7da5c6d490460e193e0dfface89f3/Innereye%20Logo.jpg"
+      alt="InnerEYE Logo"
+      id="innereye-logo"
+    >
+
+    <div class="brand-text">
+
+      <h2>InnerEYE</h2>
+
+      <p>Compassion | Charity | Service</p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================
+       ADD VISIT BUTTON
+       ===================================== -->
+
+  <button
+    id="open-visit-form"
+    type="button"
+  >
+    + Add Visit
+  </button>
+
+
+  <!-- =====================================
+       ADD VISIT FORM PANEL
+       ===================================== -->
+
+  <div id="visit-panel" class="hidden">
+
+    <div class="form-header">
+
+      <div>
+        <h2>Add School Visit</h2>
+        <p>Record a new InnerEYE school visit</p>
+      </div>
+
+      <button
+        type="button"
+        id="close-visit-form"
+        class="close-button"
+        aria-label="Close form"
+      >
+        &times;
+      </button>
+
+    </div>
+
+
+    <form id="visit-form">
+
+      <!-- School -->
+
+      <label for="visit-school">
+        School
+      </label>
+
+      <select id="visit-school" required>
+
+        <option value="">
+          Select a school
+        </option>
+
+      </select>
+
+
+      <!-- Visit Date -->
+
+      <label for="visit-date">
+        Visit Date
+      </label>
+
+      <input
+        type="date"
+        id="visit-date"
+        required
+      >
+
+
+      <!-- Visit Time -->
+
+      <label for="visit-time">
+        Visit Time
+      </label>
+
+      <input
+        type="time"
+        id="visit-time"
+      >
+
+
+      <!-- Volunteers -->
+
+      <label>
+        Volunteers
+      </label>
+
+      <div id="volunteer-list">
+
+        <div class="loading-text">
+          Volunteers will appear here
+        </div>
+
+      </div>
+
+
+      <!-- Notes -->
+
+      <label for="visit-notes">
+        Notes
+      </label>
+
+      <textarea
+        id="visit-notes"
+        rows="4"
+        placeholder="What happened during the visit?"
+      ></textarea>
+
+
+      <!-- Form Buttons -->
+
+      <div class="form-buttons">
+
+        <button
+          type="button"
+          id="cancel-visit"
+          class="secondary-button"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="submit-button"
+        >
+          Save Visit
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <!-- =====================================
+       SCHOOL VISIT STATUS LEGEND
+       ===================================== -->
+
+  <div id="map-legend">
+
+    <div class="legend-title">
+      School Visit Status
+    </div>
+
+    <div class="legend-item">
+
+      <span class="legend-dot legend-green"></span>
+
+      <span>Visited within 30 days</span>
+
+    </div>
+
+
+    <div class="legend-item">
+
+      <span class="legend-dot legend-yellow"></span>
+
+      <span>Visited 31–60 days ago</span>
+
+    </div>
+
+
+    <div class="legend-item">
+
+      <span class="legend-dot legend-red"></span>
+
+      <span>Last visit more than 60 days ago</span>
+
+    </div>
+
+
+    <div class="legend-item">
+
+      <span class="legend-dot legend-gray"></span>
+
+      <span>Never visited</span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================
+       SUPABASE JAVASCRIPT
+       ===================================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+
+  <!-- =====================================
+       WEBSITE JAVASCRIPT
+       ===================================== -->
+
+  <script src="./script.js"></script>
+
+</body>
+
+</html>
