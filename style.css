@@ -1,0 +1,660 @@
+/* ==========================================
+   GENERAL PAGE SETTINGS
+   ========================================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+
+  font-family: Arial, sans-serif;
+}
+
+
+/* ==========================================
+   INTERACTIVE MAP
+   ========================================== */
+
+#map {
+  width: 100%;
+  height: 100vh;
+}
+
+
+/* ==========================================
+   INNEREYE LOGO AND BRANDING
+   ========================================== */
+
+#innereye-brand {
+  position: absolute;
+
+  top: 15px;
+  left: 60px;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 9px 16px;
+
+  background: white;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* InnerEYE Logo */
+
+#innereye-logo {
+  width: 58px;
+  height: 58px;
+
+  object-fit: contain;
+
+  border-radius: 50%;
+}
+
+
+/* Organization Name */
+
+.brand-text h2 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: bold;
+
+  color: #087f8c;
+}
+
+
+/* Tagline */
+
+.brand-text p {
+  margin: 5px 0 0;
+
+  font-size: 11px;
+
+  color: #666;
+}
+
+
+/* ==========================================
+   SCHOOL MARKER
+   ========================================== */
+
+.school-marker-container {
+  background: transparent !important;
+  border: none !important;
+}
+
+
+/* Circular background */
+
+.school-marker {
+  position: relative;
+
+  width: 42px;
+  height: 42px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+
+/* School icon */
+
+.school-symbol {
+  font-size: 25px;
+  line-height: 1;
+}
+
+
+/* ==========================================
+   SCHOOL STATUS INDICATORS
+   ========================================== */
+
+.status-dot {
+  position: absolute;
+
+  width: 13px;
+  height: 13px;
+
+  border-radius: 50%;
+
+  right: -1px;
+  bottom: -1px;
+
+  border: 2px solid white;
+
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Recently visited */
+
+.status-dot.green {
+  background-color: #22c55e;
+}
+
+
+/* Visited 31–60 days ago */
+
+.status-dot.yellow {
+  background-color: #facc15;
+}
+
+
+/* More than 60 days ago */
+
+.status-dot.red {
+  background-color: #ef4444;
+}
+
+
+/* Never visited */
+
+.status-dot.gray {
+  background-color: #9ca3af;
+}
+
+
+/* ==========================================
+   SCHOOL INFORMATION POPUP
+   ========================================== */
+
+.school-popup {
+  min-width: 220px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+.school-popup h3 {
+  margin: 0 0 8px 0;
+
+  font-size: 18px;
+
+  color: #222;
+}
+
+
+.school-popup hr {
+  border: none;
+
+  border-top: 1px solid #dddddd;
+
+  margin: 10px 0;
+}
+
+
+/* Leaflet popup appearance */
+
+.leaflet-popup-content {
+  margin: 14px 16px;
+}
+
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+}
+
+
+/* ==========================================
+   ADD VISIT BUTTON
+   ========================================== */
+
+#open-visit-form {
+  position: absolute;
+
+  top: 20px;
+  right: 20px;
+
+  z-index: 1000;
+
+  border: none;
+
+  background: #1d4ed8;
+  color: white;
+
+  padding: 12px 18px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.25);
+
+  transition: background 0.2s;
+}
+
+
+#open-visit-form:hover {
+  background: #1e40af;
+}
+
+
+/* ==========================================
+   ADD VISIT FORM PANEL
+   ========================================== */
+
+#visit-panel {
+  position: absolute;
+
+  top: 20px;
+  right: 20px;
+
+  z-index: 2000;
+
+  width: 340px;
+
+  max-height: calc(100vh - 40px);
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  background: white;
+
+  padding: 22px;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Hide form */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ==========================================
+   FORM HEADER
+   ========================================== */
+
+.form-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 20px;
+}
+
+
+.form-header h2 {
+  margin: 0;
+
+  font-size: 21px;
+
+  color: #222;
+}
+
+
+.form-header p {
+  margin: 5px 0 0;
+
+  color: #666;
+
+  font-size: 13px;
+}
+
+
+/* Close button */
+
+.close-button {
+  border: none;
+
+  background: transparent;
+
+  font-size: 28px;
+
+  line-height: 20px;
+
+  cursor: pointer;
+
+  color: #555;
+}
+
+
+.close-button:hover {
+  color: #111;
+}
+
+
+/* ==========================================
+   FORM FIELDS
+   ========================================== */
+
+#visit-form {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+#visit-form label {
+  margin-top: 13px;
+  margin-bottom: 6px;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  color: #333;
+}
+
+
+#visit-form input,
+#visit-form select,
+#visit-form textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 10px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 7px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 14px;
+
+  background: white;
+}
+
+
+#visit-form input:focus,
+#visit-form select:focus,
+#visit-form textarea:focus {
+  outline: none;
+
+  border-color: #1d4ed8;
+}
+
+
+/* ==========================================
+   VOLUNTEER SELECTION
+   ========================================== */
+
+#volunteer-list {
+  border: 1px solid #dddddd;
+
+  border-radius: 7px;
+
+  padding: 10px;
+
+  min-height: 30px;
+
+  background: #fafafa;
+}
+
+
+.loading-text {
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+/* ==========================================
+   FORM BUTTONS
+   ========================================== */
+
+.form-buttons {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+
+.form-buttons button {
+  border: none;
+
+  padding: 10px 15px;
+
+  border-radius: 7px;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+
+/* Cancel button */
+
+.secondary-button {
+  background: #e5e7eb;
+
+  color: #222;
+}
+
+
+.secondary-button:hover {
+  background: #d1d5db;
+}
+
+
+/* Save button */
+
+.submit-button {
+  background: #1d4ed8;
+
+  color: white;
+
+  font-weight: bold;
+}
+
+
+.submit-button:hover {
+  background: #1e40af;
+}
+
+
+/* ==========================================
+   SCHOOL VISIT STATUS LEGEND
+   ========================================== */
+
+#map-legend {
+  position: absolute;
+
+  left: 15px;
+  bottom: 25px;
+
+  z-index: 1000;
+
+  background: white;
+
+  padding: 12px 15px;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.25);
+
+  font-size: 13px;
+}
+
+
+/* Legend heading */
+
+.legend-title {
+  font-weight: bold;
+
+  font-size: 14px;
+
+  margin-bottom: 9px;
+
+  color: #222;
+}
+
+
+/* Legend rows */
+
+.legend-item {
+  display: flex;
+
+  align-items: center;
+
+  margin: 6px 0;
+
+  line-height: 1.4;
+}
+
+
+/* Colored circles */
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  margin-right: 8px;
+
+  border: 1px solid #777;
+
+  flex-shrink: 0;
+}
+
+
+/* Green */
+
+.legend-green {
+  background-color: #22c55e;
+}
+
+
+/* Yellow */
+
+.legend-yellow {
+  background-color: #facc15;
+}
+
+
+/* Red */
+
+.legend-red {
+  background-color: #ef4444;
+}
+
+
+/* Gray */
+
+.legend-gray {
+  background-color: #9ca3af;
+}
+
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  /* Logo and branding */
+
+  #innereye-brand {
+    top: 65px;
+    left: 10px;
+
+    padding: 7px 10px;
+
+    gap: 8px;
+
+    max-width: calc(100vw - 40px);
+  }
+
+
+  #innereye-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+
+  .brand-text h2 {
+    font-size: 16px;
+  }
+
+
+  .brand-text p {
+    font-size: 9px;
+  }
+
+
+  /* Add Visit button */
+
+  #open-visit-form {
+    top: 10px;
+    right: 10px;
+
+    padding: 10px 13px;
+
+    font-size: 12px;
+  }
+
+
+  /* Form panel */
+
+  #visit-panel {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+
+    width: auto;
+
+    max-height: calc(100vh - 20px);
+  }
+
+
+  /* Legend */
+
+  #map-legend {
+    left: 10px;
+    bottom: 20px;
+
+    padding: 10px 12px;
+
+    font-size: 12px;
+  }
+
+
+  .legend-title {
+    font-size: 13px;
+  }
+
+}
