@@ -25,7 +25,7 @@ body {
 
 
 /* ==========================================
-   INNEREYE LOGO AND BRANDING
+   INNEREYE BRANDING
    ========================================== */
 
 #innereye-brand {
@@ -33,7 +33,6 @@ body {
 
   top: 15px;
   left: 50%;
-  right: auto;
 
   transform: translateX(-50%);
 
@@ -48,28 +47,20 @@ body {
   padding: 9px 16px;
 
   background: white;
-
   border-radius: 12px;
 
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
-
-
-/* InnerEYE Logo */
 
 #innereye-logo {
   width: 58px;
   height: 58px;
 
   object-fit: contain;
-
   border-radius: 50%;
 
   flex-shrink: 0;
 }
-
-
-/* Organization Name */
 
 .brand-text h2 {
   margin: 0;
@@ -80,48 +71,38 @@ body {
   color: #087f8c;
 }
 
-
-/* Tagline */
-
 .brand-text p {
   margin: 5px 0 0;
 
   font-size: 11px;
-
   color: #666;
 }
 
 
 /* ==========================================
-   ACTIVITY FILTER
+   ACTIVITY FILTER - TOP RIGHT
    ========================================== */
 
 #activity-filter-container {
   position: absolute;
 
-  top: 110px;
-  left: 50%;
-
-  transform: translateX(-50%);
+  top: 20px;
+  right: 20px;
 
   z-index: 1000;
 
   width: 290px;
-  max-width: calc(100vw - 30px);
+  max-width: calc(100vw - 40px);
 
   box-sizing: border-box;
 
   padding: 12px 15px;
 
   background: white;
-
   border-radius: 12px;
 
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
-
-
-/* Filter Heading */
 
 #activity-filter-container label {
   display: block;
@@ -133,9 +114,6 @@ body {
 
   color: #087f8c;
 }
-
-
-/* Dropdown */
 
 #activity-filter {
   width: 100%;
@@ -153,13 +131,42 @@ body {
   cursor: pointer;
 }
 
-
-/* Dropdown Focus */
-
 #activity-filter:focus {
   outline: none;
-
   border-color: #087f8c;
+}
+
+
+/* ==========================================
+   EMPTY CATEGORY MESSAGE
+   ========================================== */
+
+#empty-category-message {
+  position: absolute;
+
+  top: 125px;
+  right: 20px;
+
+  z-index: 1000;
+
+  width: 290px;
+  box-sizing: border-box;
+
+  padding: 12px 15px;
+
+  background: white;
+
+  border-left: 4px solid #087f8c;
+  border-radius: 8px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+
+  font-size: 13px;
+  color: #555;
+}
+
+.hidden {
+  display: none !important;
 }
 
 
@@ -169,12 +176,8 @@ body {
 
 .school-marker-container {
   background: transparent !important;
-
   border: none !important;
 }
-
-
-/* Circular School Marker */
 
 .school-marker {
   position: relative;
@@ -183,7 +186,6 @@ body {
   height: 42px;
 
   background: white;
-
   border-radius: 50%;
 
   display: flex;
@@ -193,18 +195,14 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-
-/* School Symbol */
-
 .school-symbol {
   font-size: 25px;
-
   line-height: 1;
 }
 
 
 /* ==========================================
-   SCHOOL STATUS INDICATORS
+   STATUS DOTS
    ========================================== */
 
 .status-dot {
@@ -217,35 +215,22 @@ body {
   bottom: -1px;
 
   border-radius: 50%;
-
   border: 2px solid white;
 
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-
-/* Green */
-
 .status-dot.green {
   background-color: #22c55e;
 }
-
-
-/* Yellow */
 
 .status-dot.yellow {
   background-color: #facc15;
 }
 
-
-/* Red */
-
 .status-dot.red {
   background-color: #ef4444;
 }
-
-
-/* Gray */
 
 .status-dot.gray {
   background-color: #9ca3af;
@@ -259,304 +244,27 @@ body {
 .school-popup {
   min-width: 220px;
 
-  font-family: Arial, sans-serif;
-
   font-size: 14px;
-
   line-height: 1.5;
 }
 
-
 .school-popup h3 {
   margin: 0 0 8px;
-
   font-size: 18px;
-
-  color: #222;
 }
-
 
 .school-popup hr {
   border: none;
-
   border-top: 1px solid #ddd;
-
   margin: 10px 0;
 }
-
-
-/* Leaflet Popup Styling */
 
 .leaflet-popup-content {
   margin: 14px 16px;
 }
 
-
 .leaflet-popup-content-wrapper {
   border-radius: 10px;
-}
-
-
-/* ==========================================
-   ADD VISIT BUTTON
-   ========================================== */
-
-#open-visit-form {
-  position: absolute;
-
-  top: 20px;
-  right: 20px;
-
-  z-index: 1000;
-
-  border: none;
-
-  background: #1d4ed8;
-
-  color: white;
-
-  padding: 12px 18px;
-
-  border-radius: 8px;
-
-  font-size: 14px;
-  font-weight: bold;
-
-  cursor: pointer;
-
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-
-  transition: background 0.2s;
-}
-
-
-#open-visit-form:hover {
-  background: #1e40af;
-}
-
-
-/* ==========================================
-   ADD VISIT FORM PANEL
-   ========================================== */
-
-#visit-panel {
-  position: absolute;
-
-  top: 20px;
-  right: 20px;
-
-  z-index: 2000;
-
-  width: 340px;
-
-  max-height: calc(100vh - 40px);
-
-  overflow-y: auto;
-
-  box-sizing: border-box;
-
-  background: white;
-
-  padding: 22px;
-
-  border-radius: 12px;
-
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-}
-
-
-/* Hide Form */
-
-.hidden {
-  display: none !important;
-}
-
-
-/* ==========================================
-   FORM HEADER
-   ========================================== */
-
-.form-header {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: flex-start;
-
-  margin-bottom: 20px;
-}
-
-
-.form-header h2 {
-  margin: 0;
-
-  font-size: 21px;
-
-  color: #222;
-}
-
-
-.form-header p {
-  margin: 5px 0 0;
-
-  color: #666;
-
-  font-size: 13px;
-}
-
-
-/* Close Button */
-
-.close-button {
-  border: none;
-
-  background: transparent;
-
-  font-size: 28px;
-
-  line-height: 20px;
-
-  cursor: pointer;
-
-  color: #555;
-}
-
-
-.close-button:hover {
-  color: #111;
-}
-
-
-/* ==========================================
-   FORM FIELDS
-   ========================================== */
-
-#visit-form {
-  display: flex;
-
-  flex-direction: column;
-}
-
-
-#visit-form label {
-  margin-top: 13px;
-  margin-bottom: 6px;
-
-  font-size: 13px;
-  font-weight: bold;
-
-  color: #333;
-}
-
-
-#visit-form input,
-#visit-form select,
-#visit-form textarea {
-  width: 100%;
-
-  box-sizing: border-box;
-
-  padding: 10px;
-
-  border: 1px solid #ccc;
-
-  border-radius: 7px;
-
-  font-family: Arial, sans-serif;
-
-  font-size: 14px;
-
-  background: white;
-}
-
-
-#visit-form input:focus,
-#visit-form select:focus,
-#visit-form textarea:focus {
-  outline: none;
-
-  border-color: #1d4ed8;
-}
-
-
-/* ==========================================
-   VOLUNTEER SELECTION
-   ========================================== */
-
-#volunteer-list {
-  border: 1px solid #ddd;
-
-  border-radius: 7px;
-
-  padding: 10px;
-
-  min-height: 30px;
-
-  background: #fafafa;
-}
-
-
-.loading-text {
-  color: #777;
-
-  font-size: 13px;
-}
-
-
-/* ==========================================
-   FORM BUTTONS
-   ========================================== */
-
-.form-buttons {
-  display: flex;
-
-  justify-content: flex-end;
-
-  gap: 10px;
-
-  margin-top: 22px;
-}
-
-
-.form-buttons button {
-  border: none;
-
-  padding: 10px 15px;
-
-  border-radius: 7px;
-
-  font-size: 14px;
-
-  cursor: pointer;
-}
-
-
-/* Cancel Button */
-
-.secondary-button {
-  background: #e5e7eb;
-
-  color: #222;
-}
-
-
-.secondary-button:hover {
-  background: #d1d5db;
-}
-
-
-/* Save Button */
-
-.submit-button {
-  background: #1d4ed8;
-
-  color: white;
-
-  font-weight: bold;
-}
-
-
-.submit-button:hover {
-  background: #1e40af;
 }
 
 
@@ -583,68 +291,46 @@ body {
   font-size: 13px;
 }
 
-
-/* Legend Heading */
-
 .legend-title {
   font-weight: bold;
-
   font-size: 14px;
 
   margin-bottom: 9px;
-
-  color: #222;
 }
-
-
-/* Legend Rows */
 
 .legend-item {
   display: flex;
-
   align-items: center;
 
   margin: 6px 0;
-
   line-height: 1.4;
 }
-
-
-/* Colored Status Circles */
 
 .legend-dot {
   width: 11px;
   height: 11px;
 
   border-radius: 50%;
-
   border: 1px solid #777;
 
   margin-right: 8px;
-
   flex-shrink: 0;
 }
 
-
-/* Legend Colors */
-
 .legend-green {
-  background-color: #22c55e;
+  background: #22c55e;
 }
-
 
 .legend-yellow {
-  background-color: #facc15;
+  background: #facc15;
 }
-
 
 .legend-red {
-  background-color: #ef4444;
+  background: #ef4444;
 }
 
-
 .legend-gray {
-  background-color: #9ca3af;
+  background: #9ca3af;
 }
 
 
@@ -654,83 +340,51 @@ body {
 
 @media (max-width: 600px) {
 
-  /* Branding */
+  /* Branding remains centred */
 
   #innereye-brand {
-    top: 65px;
-
+    top: 15px;
     left: 50%;
-    right: auto;
 
     transform: translateX(-50%);
 
     padding: 7px 10px;
-
     gap: 8px;
 
     max-width: calc(100vw - 30px);
-
     box-sizing: border-box;
   }
-
-
-  /* Logo */
 
   #innereye-logo {
     width: 42px;
     height: 42px;
   }
 
-
-  /* Organization Name */
-
   .brand-text h2 {
     font-size: 16px;
   }
-
-
-  /* Tagline */
 
   .brand-text p {
     font-size: 9px;
   }
 
-
-  /* Activity Filter */
+  /* Activity filter below branding on mobile
+     to prevent overlap */
 
   #activity-filter-container {
-    top: 135px;
+    top: 95px;
+    right: 10px;
 
-    width: 250px;
-
+    width: 220px;
     padding: 10px 12px;
   }
 
-
-  /* Add Visit Button */
-
-  #open-visit-form {
-    top: 10px;
+  #empty-category-message {
+    top: 195px;
     right: 10px;
 
-    padding: 10px 13px;
-
-    font-size: 12px;
+    width: 220px;
   }
-
-
-  /* Visit Form */
-
-  #visit-panel {
-    top: 10px;
-    left: 10px;
-    right: 10px;
-
-    width: auto;
-
-    max-height: calc(100vh - 20px);
-  }
-
 
   /* Legend */
 
@@ -743,9 +397,26 @@ body {
     font-size: 12px;
   }
 
-
   .legend-title {
     font-size: 13px;
+  }
+
+}
+
+
+/* ==========================================
+   TABLET LAYOUT
+   Prevent branding/filter overlap
+   ========================================== */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+  #activity-filter-container {
+    top: 110px;
+  }
+
+  #empty-category-message {
+    top: 215px;
   }
 
 }
