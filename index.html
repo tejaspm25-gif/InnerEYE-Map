@@ -21,9 +21,7 @@
   <link rel="stylesheet" href="./style.css">
 
   <!-- Leaflet JavaScript -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-  </script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 </head>
 
@@ -43,7 +41,7 @@
   <div id="innereye-brand">
 
     <img
-      src="https://raw.githubusercontent.com/tejaspm25-gif/InnerEYE-Map/16e5e77c22e7da5c6d490460e193e0dfface89f3/Innereye%20Logo.jpg"
+      src="./Innereye%20Logo.jpg"
       alt="InnerEYE Logo"
       id="innereye-logo"
     >
@@ -55,6 +53,55 @@
       <p>Compassion | Charity | Service</p>
 
     </div>
+
+  </div>
+
+
+  <!-- =====================================
+       EXPLORE INNEREYE ACTIVITIES
+       ===================================== -->
+
+  <div id="activity-filter-container">
+
+    <label for="activity-filter">
+      Explore InnerEYE Activities
+    </label>
+
+    <select id="activity-filter">
+
+      <option value="all">
+        🌍 All Activities
+      </option>
+
+      <option value="classroom-teaching">
+        🏫 Classroom Teaching
+      </option>
+
+      <option value="home-for-elders">
+        👴 Home for Elders
+      </option>
+
+      <option value="hunger-relief">
+        🍲 Hunger Relief: Feeding Homeless
+      </option>
+
+      <option value="clothes-collection">
+        👕 Clothes Collection Drive
+      </option>
+
+      <option value="vipassana">
+        🧘 Vipassana Meditation
+      </option>
+
+      <option value="sanitary-pads">
+        🩷 Sanitary Pads Distribution
+      </option>
+
+      <option value="miscellaneous">
+        📍 Miscellaneous Events & Visits
+      </option>
+
+    </select>
 
   </div>
 
@@ -98,7 +145,7 @@
 
     <form id="visit-form">
 
-      <!-- School -->
+      <!-- School Selection -->
 
       <label for="visit-school">
         School
@@ -153,7 +200,7 @@
       </div>
 
 
-      <!-- Notes -->
+      <!-- Visit Notes -->
 
       <label for="visit-notes">
         Notes
@@ -203,38 +250,23 @@
     </div>
 
     <div class="legend-item">
-
       <span class="legend-dot legend-green"></span>
-
       <span>Visited within 30 days</span>
-
     </div>
 
-
     <div class="legend-item">
-
       <span class="legend-dot legend-yellow"></span>
-
       <span>Visited 31–60 days ago</span>
-
     </div>
 
-
     <div class="legend-item">
-
       <span class="legend-dot legend-red"></span>
-
       <span>Last visit more than 60 days ago</span>
-
     </div>
 
-
     <div class="legend-item">
-
       <span class="legend-dot legend-gray"></span>
-
       <span>Never visited</span>
-
     </div>
 
   </div>
@@ -244,16 +276,15 @@
        SUPABASE JAVASCRIPT
        ===================================== -->
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
   <!-- =====================================
        WEBSITE JAVASCRIPT
+       IMPORTANT: YOUR FILE IS scripts.js
        ===================================== -->
 
-  <script src="./script.js"></script>
+  <script src="./scripts.js"></script>
 
 </body>
 
