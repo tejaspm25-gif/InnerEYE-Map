@@ -27,17 +27,11 @@
 
 <body>
 
-  <!-- =====================================
-       INTERACTIVE MAP
-       ===================================== -->
-
+  <!-- INTERACTIVE MAP -->
   <div id="map"></div>
 
 
-  <!-- =====================================
-       INNEREYE LOGO AND BRANDING
-       ===================================== -->
-
+  <!-- INNEREYE LOGO AND BRANDING -->
   <div id="innereye-brand">
 
     <img
@@ -47,20 +41,14 @@
     >
 
     <div class="brand-text">
-
       <h2>InnerEYE</h2>
-
       <p>Compassion | Charity | Service</p>
-
     </div>
 
   </div>
 
 
-  <!-- =====================================
-       EXPLORE INNEREYE ACTIVITIES
-       ===================================== -->
-
+  <!-- ACTIVITY FILTER -->
   <div id="activity-filter-container">
 
     <label for="activity-filter">
@@ -106,143 +94,13 @@
   </div>
 
 
-  <!-- =====================================
-       ADD VISIT BUTTON
-       ===================================== -->
-
-  <button
-    id="open-visit-form"
-    type="button"
-  >
-    + Add Visit
-  </button>
-
-
-  <!-- =====================================
-       ADD VISIT FORM PANEL
-       ===================================== -->
-
-  <div id="visit-panel" class="hidden">
-
-    <div class="form-header">
-
-      <div>
-        <h2>Add School Visit</h2>
-        <p>Record a new InnerEYE school visit</p>
-      </div>
-
-      <button
-        type="button"
-        id="close-visit-form"
-        class="close-button"
-        aria-label="Close form"
-      >
-        &times;
-      </button>
-
-    </div>
-
-
-    <form id="visit-form">
-
-      <!-- School Selection -->
-
-      <label for="visit-school">
-        School
-      </label>
-
-      <select id="visit-school" required>
-
-        <option value="">
-          Select a school
-        </option>
-
-      </select>
-
-
-      <!-- Visit Date -->
-
-      <label for="visit-date">
-        Visit Date
-      </label>
-
-      <input
-        type="date"
-        id="visit-date"
-        required
-      >
-
-
-      <!-- Visit Time -->
-
-      <label for="visit-time">
-        Visit Time
-      </label>
-
-      <input
-        type="time"
-        id="visit-time"
-      >
-
-
-      <!-- Volunteers -->
-
-      <label>
-        Volunteers
-      </label>
-
-      <div id="volunteer-list">
-
-        <div class="loading-text">
-          Volunteers will appear here
-        </div>
-
-      </div>
-
-
-      <!-- Visit Notes -->
-
-      <label for="visit-notes">
-        Notes
-      </label>
-
-      <textarea
-        id="visit-notes"
-        rows="4"
-        placeholder="What happened during the visit?"
-      ></textarea>
-
-
-      <!-- Form Buttons -->
-
-      <div class="form-buttons">
-
-        <button
-          type="button"
-          id="cancel-visit"
-          class="secondary-button"
-        >
-          Cancel
-        </button>
-
-        <button
-          type="submit"
-          class="submit-button"
-        >
-          Save Visit
-        </button>
-
-      </div>
-
-    </form>
-
+  <!-- MESSAGE WHEN CATEGORY HAS NO LOCATIONS -->
+  <div id="empty-category-message" class="hidden">
+    No activities recorded in this category yet.
   </div>
 
 
-  <!-- =====================================
-       SCHOOL VISIT STATUS LEGEND
-       ===================================== -->
-
+  <!-- SCHOOL VISIT STATUS LEGEND -->
   <div id="map-legend">
 
     <div class="legend-title">
@@ -272,20 +130,11 @@
   </div>
 
 
-  <!-- =====================================
-       SUPABASE JAVASCRIPT
-       ===================================== -->
-
+  <!-- SUPABASE -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
-  <!-- =====================================
-       WEBSITE JAVASCRIPT
-       IMPORTANT: YOUR FILE IS scripts.js
-       ===================================== -->
-
+  <!-- WEBSITE JAVASCRIPT -->
   <script src="./scripts.js"></script>
 
 </body>
-
 </html>
