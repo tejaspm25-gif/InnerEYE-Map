@@ -6,10 +6,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-
   width: 100%;
   height: 100%;
-
   font-family: Arial, sans-serif;
 }
 
@@ -26,29 +24,33 @@ body {
 
 /* ==========================================
    INNEREYE LOGO AND BRANDING
+   TOP-CENTRE POSITION
    ========================================== */
 
 #innereye-brand {
   position: absolute;
 
+  /* Top-middle of the website */
   top: 15px;
-  left: 60px;
+  left: 50%;
+  right: auto;
+
+  transform: translateX(-50%);
 
   z-index: 1000;
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   gap: 12px;
 
   padding: 9px 16px;
 
   background: white;
-
   border-radius: 12px;
 
-  box-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -59,8 +61,9 @@ body {
   height: 58px;
 
   object-fit: contain;
-
   border-radius: 50%;
+
+  flex-shrink: 0;
 }
 
 
@@ -82,13 +85,12 @@ body {
   margin: 5px 0 0;
 
   font-size: 11px;
-
   color: #666;
 }
 
 
 /* ==========================================
-   SCHOOL MARKER
+   SCHOOL MARKERS
    ========================================== */
 
 .school-marker-container {
@@ -97,7 +99,7 @@ body {
 }
 
 
-/* Circular background */
+/* Circular School Marker */
 
 .school-marker {
   position: relative;
@@ -106,19 +108,17 @@ body {
   height: 42px;
 
   background: white;
-
   border-radius: 50%;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
 
-/* School icon */
+/* School Symbol */
 
 .school-symbol {
   font-size: 25px;
@@ -136,40 +136,38 @@ body {
   width: 13px;
   height: 13px;
 
-  border-radius: 50%;
-
   right: -1px;
   bottom: -1px;
 
+  border-radius: 50%;
   border: 2px solid white;
 
-  box-shadow:
-    0 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 
-/* Recently visited */
+/* Green: Visited within 30 days */
 
 .status-dot.green {
   background-color: #22c55e;
 }
 
 
-/* Visited 31–60 days ago */
+/* Yellow: Visited 31–60 days ago */
 
 .status-dot.yellow {
   background-color: #facc15;
 }
 
 
-/* More than 60 days ago */
+/* Red: Last visit more than 60 days ago */
 
 .status-dot.red {
   background-color: #ef4444;
 }
 
 
-/* Never visited */
+/* Gray: Never visited */
 
 .status-dot.gray {
   background-color: #9ca3af;
@@ -184,7 +182,6 @@ body {
   min-width: 220px;
 
   font-family: Arial, sans-serif;
-
   font-size: 14px;
 
   line-height: 1.5;
@@ -192,24 +189,22 @@ body {
 
 
 .school-popup h3 {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
 
   font-size: 18px;
-
   color: #222;
 }
 
 
 .school-popup hr {
   border: none;
-
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #ddd;
 
   margin: 10px 0;
 }
 
 
-/* Leaflet popup appearance */
+/* Leaflet Popup Styling */
 
 .leaflet-popup-content {
   margin: 14px 16px;
@@ -247,8 +242,7 @@ body {
 
   cursor: pointer;
 
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 
   transition: background 0.2s;
 }
@@ -274,7 +268,6 @@ body {
   width: 340px;
 
   max-height: calc(100vh - 40px);
-
   overflow-y: auto;
 
   box-sizing: border-box;
@@ -285,12 +278,11 @@ body {
 
   border-radius: 12px;
 
-  box-shadow:
-    0 5px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
 }
 
 
-/* Hide form */
+/* Hide Form */
 
 .hidden {
   display: none !important;
@@ -315,7 +307,6 @@ body {
   margin: 0;
 
   font-size: 21px;
-
   color: #222;
 }
 
@@ -324,24 +315,20 @@ body {
   margin: 5px 0 0;
 
   color: #666;
-
   font-size: 13px;
 }
 
 
-/* Close button */
+/* Close Button */
 
 .close-button {
   border: none;
-
   background: transparent;
 
   font-size: 28px;
-
   line-height: 20px;
 
   cursor: pointer;
-
   color: #555;
 }
 
@@ -357,7 +344,6 @@ body {
 
 #visit-form {
   display: flex;
-
   flex-direction: column;
 }
 
@@ -377,17 +363,14 @@ body {
 #visit-form select,
 #visit-form textarea {
   width: 100%;
-
   box-sizing: border-box;
 
   padding: 10px;
 
-  border: 1px solid #cccccc;
-
+  border: 1px solid #ccc;
   border-radius: 7px;
 
   font-family: Arial, sans-serif;
-
   font-size: 14px;
 
   background: white;
@@ -398,7 +381,6 @@ body {
 #visit-form select:focus,
 #visit-form textarea:focus {
   outline: none;
-
   border-color: #1d4ed8;
 }
 
@@ -408,8 +390,7 @@ body {
    ========================================== */
 
 #volunteer-list {
-  border: 1px solid #dddddd;
-
+  border: 1px solid #ddd;
   border-radius: 7px;
 
   padding: 10px;
@@ -422,7 +403,6 @@ body {
 
 .loading-text {
   color: #777;
-
   font-size: 13px;
 }
 
@@ -435,7 +415,6 @@ body {
   display: flex;
 
   justify-content: flex-end;
-
   gap: 10px;
 
   margin-top: 22px;
@@ -446,20 +425,17 @@ body {
   border: none;
 
   padding: 10px 15px;
-
   border-radius: 7px;
 
   font-size: 14px;
-
   cursor: pointer;
 }
 
 
-/* Cancel button */
+/* Cancel Button */
 
 .secondary-button {
   background: #e5e7eb;
-
   color: #222;
 }
 
@@ -469,11 +445,10 @@ body {
 }
 
 
-/* Save button */
+/* Save Button */
 
 .submit-button {
   background: #1d4ed8;
-
   color: white;
 
   font-weight: bold;
@@ -500,34 +475,29 @@ body {
   background: white;
 
   padding: 12px 15px;
-
   border-radius: 10px;
 
-  box-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 
   font-size: 13px;
 }
 
 
-/* Legend heading */
+/* Legend Heading */
 
 .legend-title {
   font-weight: bold;
-
   font-size: 14px;
 
   margin-bottom: 9px;
-
   color: #222;
 }
 
 
-/* Legend rows */
+/* Legend Rows */
 
 .legend-item {
   display: flex;
-
   align-items: center;
 
   margin: 6px 0;
@@ -536,44 +506,34 @@ body {
 }
 
 
-/* Colored circles */
+/* Colored Status Circles */
 
 .legend-dot {
   width: 11px;
   height: 11px;
 
   border-radius: 50%;
+  border: 1px solid #777;
 
   margin-right: 8px;
-
-  border: 1px solid #777;
 
   flex-shrink: 0;
 }
 
 
-/* Green */
+/* Legend Colors */
 
 .legend-green {
   background-color: #22c55e;
 }
 
-
-/* Yellow */
-
 .legend-yellow {
   background-color: #facc15;
 }
 
-
-/* Red */
-
 .legend-red {
   background-color: #ef4444;
 }
-
-
-/* Gray */
 
 .legend-gray {
   background-color: #9ca3af;
@@ -586,19 +546,24 @@ body {
 
 @media (max-width: 600px) {
 
-  /* Logo and branding */
+  /* Logo at top-centre */
 
   #innereye-brand {
     top: 65px;
-    left: 10px;
+    left: 50%;
+    right: auto;
+
+    transform: translateX(-50%);
 
     padding: 7px 10px;
-
     gap: 8px;
 
-    max-width: calc(100vw - 40px);
+    max-width: calc(100vw - 30px);
+    box-sizing: border-box;
   }
 
+
+  /* Smaller Logo */
 
   #innereye-logo {
     width: 42px;
@@ -606,17 +571,21 @@ body {
   }
 
 
+  /* Smaller Organization Name */
+
   .brand-text h2 {
     font-size: 16px;
   }
 
+
+  /* Smaller Tagline */
 
   .brand-text p {
     font-size: 9px;
   }
 
 
-  /* Add Visit button */
+  /* Add Visit Button */
 
   #open-visit-form {
     top: 10px;
@@ -628,7 +597,7 @@ body {
   }
 
 
-  /* Form panel */
+  /* Visit Form */
 
   #visit-panel {
     top: 10px;
@@ -641,7 +610,7 @@ body {
   }
 
 
-  /* Legend */
+  /* Map Legend */
 
   #map-legend {
     left: 10px;
