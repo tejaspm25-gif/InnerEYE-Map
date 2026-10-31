@@ -1,12 +1,18 @@
 /* ==========================================
-   SUPABASE CONNECTION
+   1. SUPABASE CONNECTION
    ========================================== */
 
+// Enter your actual Supabase Project URL.
+// Do NOT add /rest/v1 at the end.
+
 const SUPABASE_URL =
-  "https://fjjsmeriudjzkmwrbqdd.supabase.co";
+  "https://YOUR-PROJECT.supabase.co";
+
+// Enter your Supabase publishable key.
+// Never use a secret or service_role key.
 
 const SUPABASE_KEY =
-  "sb_publishable_g5YAtmp8uuo5NNWBBn8rDw_t-bYykHw";
+  "YOUR_SUPABASE_PUBLISHABLE_KEY";
 
 const db = supabase.createClient(
   SUPABASE_URL,
@@ -15,7 +21,7 @@ const db = supabase.createClient(
 
 
 /* ==========================================
-   INITIALIZE LEAFLET MAP
+   2. INITIALIZE MAP
    ========================================== */
 
 const map = L.map("map").setView(
@@ -33,7 +39,7 @@ L.tileLayer(
 
 
 /* ==========================================
-   ACTIVITY CATEGORIES
+   3. HTML ELEMENTS
    ========================================== */
 
 const activityFilter =
@@ -47,16 +53,8 @@ const mapLegend =
 
 
 /* ==========================================
-   MARKER LAYERS
+   4. ACTIVITY MARKER LAYERS
    ========================================== */
-
-/*
-  Each activity type will eventually have
-  its own layer.
-
-  For now, only Classroom Teaching
-  contains records from Supabase.
-*/
 
 const activityLayers = {
 
@@ -78,79 +76,7 @@ const activityLayers = {
 
 
 /* ==========================================
-   SCHOOL VISIT STATUS
-   ========================================== */
-
-function getSchoolStatus(latestVisit) {
-
-  if (!latestVisit) {
-    return "gray";
-  }
-
-  const today = new Date();
-
-  const visitDate = new Date(
-    latestVisit.visit_date + "T00:00:00"
-  );
-
-  const differenceInMilliseconds =
-    today.getTime() - visitDate.getTime();
-
-  const daysSinceVisit = Math.floor(
-    differenceInMilliseconds /
-    (1000 * 60 * 60 * 24)
-  );
-
-  if (daysSinceVisit <= 30) {
-    return "green";
-  }
-
-  if (daysSinceVisit <= 60) {
-    return "yellow";
-  }
-
-  return "red";
-
-}
-
-
-/* ==========================================
-   CREATE SCHOOL MARKER ICON
-   ========================================== */
-
-function createSchoolIcon(status) {
-
-  return L.divIcon({
-
-    className: "school-marker-container",
-
-    html: `
-      <div class="school-marker">
-
-        <div class="school-symbol">
-          🏫
-        </div>
-
-        <div class="status-dot ${status}">
-        </div>
-
-      </div>
-    `,
-
-    iconSize: [44, 44],
-
-    iconAnchor: [22, 22],
-
-    popupAnchor: [0, -22]
-
-  });
-
-}
-
-
-/* ==========================================
-   ESCAPE HTML
-   Prevent text from being interpreted as HTML
+   5. ESCAPE HTML
    ========================================== */
 
 function escapeHTML(value) {
@@ -166,18 +92,22 @@ function escapeHTML(value) {
 
 
 /* ==========================================
-   FORMAT VISIT DATE
+   6. FORMAT DATE
    ========================================== */
 
 function formatVisitDate(dateString) {
 
   if (!dateString) {
-    return "Not available";
+    return "Not recorded";
   }
 
   const date = new Date(
     dateString + "T00:00:00"
   );
+
+  if (Number.isNaN(date.getTime())) {
+    return "Not recorded";
+  }
 
   return date.toLocaleDateString("en-IN", {
     day: "numeric",
@@ -189,7 +119,7 @@ function formatVisitDate(dateString) {
 
 
 /* ==========================================
-   FORMAT VISIT TIME
+   7. FORMAT TIME
    ========================================== */
 
 function formatVisitTime(timeString) {
@@ -223,10 +153,135 @@ function formatVisitTime(timeString) {
 
 
 /* ==========================================
-   GET VOLUNTEER NAMES
+   8. SCHOOL VISIT STATUS
    ========================================== */
 
-function getVolunteerNames(visit) {
+function getSchoolStatus(latestVisit) {
+
+  if (!latestVisit || !latestVisit.visit_date) {
+    return "gray";
+  }
+
+  const today = new Date();
+
+  today.setHours(0, 0, 0, 0);
+
+  const visitDate = new Date(
+    latestVisit.visit_date + "T00:00:00"
+  );
+
+  if (Number.isNaN(visitDate.getTime())) {
+    return "gray";
+  }
+
+  const daysSinceVisit = Math.floor(
+    (today - visitDate) /
+    (1000 * 60 * 60 * 24)
+  );
+
+  if (daysSinceVisit <= 30) {
+    return "green";
+  }
+
+  if (daysSinceVisit <= 60) {
+    return "yellow";
+  }
+
+  return "red";
+
+}
+
+
+/* ==========================================
+   9. SCHOOL MARKER ICON
+   ========================================== */
+
+function createSchoolIcon(status) {
+
+  return L.divIcon({
+
+    className: "school-marker-container",
+
+    html: `
+      <div class="school-marker">
+
+        <div class="school-symbol">
+          🏫
+        </div>
+
+        <div class="status-dot ${status}">
+        </div>
+
+      </div>
+    `,
+
+    iconSize: [44, 44],
+
+    iconAnchor: [22, 22],
+
+    popupAnchor: [0, -22]
+
+  });
+
+}
+
+
+/* ==========================================
+   10. OTHER ACTIVITY MARKER ICONS
+   ========================================== */
+
+const categoryIcons = {
+
+  "home-for-elders": "👴",
+
+  "hunger-relief": "🍲",
+
+  "clothes-collection": "👕",
+
+  "vipassana": "🧘",
+
+  "sanitary-pads": "🩷",
+
+  "miscellaneous": "📍"
+
+};
+
+
+function createActivityIcon(category) {
+
+  const symbol =
+    categoryIcons[category] || "📍";
+
+  return L.divIcon({
+
+    className: "school-marker-container",
+
+    html: `
+      <div class="school-marker">
+
+        <div class="school-symbol">
+          ${symbol}
+        </div>
+
+      </div>
+    `,
+
+    iconSize: [44, 44],
+
+    iconAnchor: [22, 22],
+
+    popupAnchor: [0, -22]
+
+  });
+
+}
+
+
+/* ==========================================
+   11. VOLUNTEER NAMES
+   ========================================== */
+
+function getSchoolVolunteerNames(visit) {
 
   if (!visit || !visit.visit_volunteers) {
     return "Not recorded";
@@ -247,13 +302,34 @@ function getVolunteerNames(visit) {
 }
 
 
+function getEventVolunteerNames(event) {
+
+  if (!event || !event.event_volunteers) {
+    return "Not recorded";
+  }
+
+  const names = event.event_volunteers
+    .map(record => record.volunteers?.name)
+    .filter(Boolean);
+
+  if (names.length === 0) {
+    return "Not recorded";
+  }
+
+  return names
+    .map(name => escapeHTML(name))
+    .join(", ");
+
+}
+
+
 /* ==========================================
-   CREATE SCHOOL POPUP
+   12. SCHOOL POPUP
    ========================================== */
 
 function createSchoolPopup(school, latestVisit) {
 
-  let popupHTML = `
+  let html = `
 
     <div class="school-popup">
 
@@ -270,7 +346,7 @@ function createSchoolPopup(school, latestVisit) {
 
   if (school.principal_name) {
 
-    popupHTML += `
+    html += `
 
       <p>
         <strong>Principal:</strong>
@@ -281,11 +357,11 @@ function createSchoolPopup(school, latestVisit) {
 
   }
 
-  popupHTML += "<hr>";
+  html += "<hr>";
 
   if (latestVisit) {
 
-    popupHTML += `
+    html += `
 
       <p>
         <strong>Last Visit:</strong><br>
@@ -299,7 +375,7 @@ function createSchoolPopup(school, latestVisit) {
 
       <p>
         <strong>Volunteers:</strong><br>
-        ${getVolunteerNames(latestVisit)}
+        ${getSchoolVolunteerNames(latestVisit)}
       </p>
 
       <p>
@@ -311,7 +387,7 @@ function createSchoolPopup(school, latestVisit) {
 
   } else {
 
-    popupHTML += `
+    html += `
 
       <p>
         No visits recorded yet.
@@ -321,15 +397,129 @@ function createSchoolPopup(school, latestVisit) {
 
   }
 
-  popupHTML += "</div>";
+  html += "</div>";
 
-  return popupHTML;
+  return html;
 
 }
 
 
 /* ==========================================
-   LOAD SCHOOLS FROM SUPABASE
+   13. ACTIVITY POPUP
+   ========================================== */
+
+function createActivityPopup(location, events) {
+
+  let html = `
+
+    <div class="school-popup">
+
+      <h3>
+        ${escapeHTML(location.name)}
+      </h3>
+
+  `;
+
+  if (location.address) {
+
+    html += `
+
+      <p>
+        <strong>Address:</strong><br>
+        ${escapeHTML(location.address)}
+      </p>
+
+    `;
+
+  }
+
+  if (location.description) {
+
+    html += `
+
+      <p>
+        ${escapeHTML(location.description)}
+      </p>
+
+    `;
+
+  }
+
+  html += "<hr>";
+
+  if (!events || events.length === 0) {
+
+    html += `
+
+      <p>
+        No events recorded yet.
+      </p>
+
+    `;
+
+  } else {
+
+    html += `
+
+      <p>
+        <strong>
+          Total Events: ${events.length}
+        </strong>
+      </p>
+
+    `;
+
+    for (const event of events) {
+
+      html += `
+
+        <div class="event-details">
+
+          <p>
+            <strong>
+              ${escapeHTML(event.title || "InnerEYE Visit")}
+            </strong>
+          </p>
+
+          <p>
+            <strong>Date:</strong>
+            ${formatVisitDate(event.event_date)}
+          </p>
+
+          <p>
+            <strong>Time:</strong>
+            ${formatVisitTime(event.event_time)}
+          </p>
+
+          <p>
+            <strong>Volunteers:</strong><br>
+            ${getEventVolunteerNames(event)}
+          </p>
+
+          <p>
+            <strong>Description:</strong><br>
+            ${escapeHTML(event.description || "Not recorded")}
+          </p>
+
+        </div>
+
+        <hr>
+
+      `;
+
+    }
+
+  }
+
+  html += "</div>";
+
+  return html;
+
+}
+
+
+/* ==========================================
+   14. LOAD SCHOOLS
    ========================================== */
 
 async function loadSchools() {
@@ -364,11 +554,6 @@ async function loadSchools() {
       error
     );
 
-    emptyCategoryMessage.textContent =
-      "Unable to load school data. Please try again later.";
-
-    emptyCategoryMessage.classList.remove("hidden");
-
     return;
 
   }
@@ -384,6 +569,8 @@ async function loadSchools() {
     const longitude = Number(school.longitude);
 
     if (
+      school.latitude == null ||
+      school.longitude == null ||
       !Number.isFinite(latitude) ||
       !Number.isFinite(longitude) ||
       latitude < -90 ||
@@ -391,14 +578,7 @@ async function loadSchools() {
       longitude < -180 ||
       longitude > 180
     ) {
-
-      console.warn(
-        "Skipping school with invalid coordinates:",
-        school.name
-      );
-
       continue;
-
     }
 
     const visits = Array.isArray(school.visits)
@@ -407,8 +587,11 @@ async function loadSchools() {
 
     visits.sort((a, b) => {
 
-      const dateA = `${a.visit_date || ""}T${a.visit_time || "00:00:00"}`;
-      const dateB = `${b.visit_date || ""}T${b.visit_time || "00:00:00"}`;
+      const dateA =
+        `${a.visit_date || ""}T${a.visit_time || "00:00:00"}`;
+
+      const dateB =
+        `${b.visit_date || ""}T${b.visit_time || "00:00:00"}`;
 
       return dateB.localeCompare(dateA);
 
@@ -439,7 +622,195 @@ async function loadSchools() {
 
 
 /* ==========================================
-   FILTER ACTIVITIES
+   15. LOAD ALL ACTIVITY LOCATIONS
+   ========================================== */
+
+async function loadActivityLocations() {
+
+  /*
+    Read the activity categories first.
+
+    This avoids assuming that
+    Home for Elders always has ID 2.
+  */
+
+  const {
+    data: categories,
+    error: categoryError
+  } = await db
+    .from("activity_categories")
+    .select("id, slug");
+
+  if (categoryError) {
+
+    console.error(
+      "Error loading activity categories:",
+      categoryError
+    );
+
+    return;
+
+  }
+
+  const categoryLookup = {};
+
+  for (const category of categories || []) {
+
+    categoryLookup[category.id] =
+      category.slug;
+
+  }
+
+  /*
+    Fetch all locations, together with
+    their events and participating volunteers.
+  */
+
+  const {
+    data: locations,
+    error: locationError
+  } = await db
+    .from("locations")
+    .select(`
+      id,
+      name,
+      address,
+      latitude,
+      longitude,
+      category_id,
+      description,
+      events (
+        id,
+        event_date,
+        event_time,
+        title,
+        description,
+        event_volunteers (
+          volunteers (
+            id,
+            name
+          )
+        )
+      )
+    `);
+
+  if (locationError) {
+
+    console.error(
+      "Error loading activity locations:",
+      locationError
+    );
+
+    return;
+
+  }
+
+  /*
+    Clear existing non-school markers.
+  */
+
+  Object.entries(activityLayers).forEach(
+    ([category, layer]) => {
+
+      if (category !== "classroom-teaching") {
+        layer.clearLayers();
+      }
+
+    }
+  );
+
+  /*
+    Create markers.
+  */
+
+  for (const location of locations || []) {
+
+    const category =
+      categoryLookup[location.category_id];
+
+    if (!category) {
+      continue;
+    }
+
+    /*
+      Schools currently come from the
+      existing schools table.
+
+      Avoid creating duplicate school markers.
+    */
+
+    if (category === "classroom-teaching") {
+      continue;
+    }
+
+    const layer = activityLayers[category];
+
+    if (!layer) {
+      continue;
+    }
+
+    const latitude = Number(location.latitude);
+    const longitude = Number(location.longitude);
+
+    if (
+      location.latitude == null ||
+      location.longitude == null ||
+      !Number.isFinite(latitude) ||
+      !Number.isFinite(longitude) ||
+      latitude < -90 ||
+      latitude > 90 ||
+      longitude < -180 ||
+      longitude > 180
+    ) {
+      continue;
+    }
+
+    const events = Array.isArray(location.events)
+      ? [...location.events]
+      : [];
+
+    /*
+      Most recent events first.
+    */
+
+    events.sort((a, b) => {
+
+      const dateA =
+        `${a.event_date || ""}T${a.event_time || "00:00:00"}`;
+
+      const dateB =
+        `${b.event_date || ""}T${b.event_time || "00:00:00"}`;
+
+      return dateB.localeCompare(dateA);
+
+    });
+
+    const marker = L.marker(
+      [latitude, longitude],
+      {
+        icon: createActivityIcon(category)
+      }
+    );
+
+    marker.bindPopup(
+      createActivityPopup(location, events),
+      {
+        maxWidth: 320,
+        maxHeight: 350
+      }
+    );
+
+    marker.addTo(layer);
+
+  }
+
+  updateActivityFilter();
+
+}
+
+
+/* ==========================================
+   16. ACTIVITY FILTER
    ========================================== */
 
 function updateActivityFilter() {
@@ -448,7 +819,7 @@ function updateActivityFilter() {
     activityFilter.value;
 
   /*
-    Remove all activity layers first.
+    Remove all activity layers.
   */
 
   Object.values(activityLayers).forEach(layer => {
@@ -460,16 +831,13 @@ function updateActivityFilter() {
   });
 
   /*
-    Show the selected category,
-    or every category if "all" is selected.
+    Display the selected category.
   */
 
   if (selectedCategory === "all") {
 
     Object.values(activityLayers).forEach(layer => {
-
       layer.addTo(map);
-
     });
 
   } else if (activityLayers[selectedCategory]) {
@@ -501,8 +869,7 @@ function updateActivityFilter() {
   );
 
   /*
-    Show a message when the selected
-    category has no markers.
+    Empty category message.
   */
 
   if (visibleMarkerCount === 0) {
@@ -519,9 +886,7 @@ function updateActivityFilter() {
   }
 
   /*
-    The existing legend describes school
-    visit status, so show it only when
-    school markers are included.
+    School legend.
   */
 
   if (
@@ -541,7 +906,7 @@ function updateActivityFilter() {
 
 
 /* ==========================================
-   EVENT LISTENER
+   17. DROPDOWN EVENT LISTENER
    ========================================== */
 
 activityFilter.addEventListener(
@@ -551,9 +916,18 @@ activityFilter.addEventListener(
 
 
 /* ==========================================
-   INITIALIZE WEBSITE
+   18. INITIALIZE WEBSITE
    ========================================== */
 
-updateActivityFilter();
+async function initializeWebsite() {
 
-loadSchools();
+  updateActivityFilter();
+
+  await Promise.all([
+    loadSchools(),
+    loadActivityLocations()
+  ]);
+
+}
+
+initializeWebsite();
