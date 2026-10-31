@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>InnerEYE | Activities Map</title>
+  <title>iNNER-EYE | Activities Map</title>
 
   <!-- Leaflet CSS -->
   <link
@@ -27,32 +28,44 @@
 
 <body>
 
-  <!-- INTERACTIVE MAP -->
+  <!-- =====================================
+       INTERACTIVE MAP
+       ===================================== -->
+
   <div id="map"></div>
 
 
-  <!-- INNEREYE LOGO AND BRANDING -->
+  <!-- =====================================
+       iNNER-EYE BRANDING
+       ===================================== -->
+
   <div id="innereye-brand">
 
     <img
       src="./Innereye%20Logo.jpg"
-      alt="InnerEYE Logo"
+      alt="iNNER-EYE Foundation Logo"
       id="innereye-logo"
     >
 
     <div class="brand-text">
-      <h2>InnerEYE</h2>
+
+      <h2>iNNER-EYE</h2>
+
       <p>Compassion | Charity | Service</p>
+
     </div>
 
   </div>
 
 
-  <!-- ACTIVITY FILTER -->
+  <!-- =====================================
+       EXPLORE iNNER-EYE ACTIVITIES
+       ===================================== -->
+
   <div id="activity-filter-container">
 
     <label for="activity-filter">
-      Explore InnerEYE Activities
+      Explore iNNER-EYE Activities
     </label>
 
     <select id="activity-filter">
@@ -94,13 +107,24 @@
   </div>
 
 
-  <!-- MESSAGE WHEN CATEGORY HAS NO LOCATIONS -->
-  <div id="empty-category-message" class="hidden">
+  <!-- =====================================
+       EMPTY CATEGORY MESSAGE
+       ===================================== -->
+
+  <div
+    id="empty-category-message"
+    class="hidden"
+    role="status"
+    aria-live="polite"
+  >
     No activities recorded in this category yet.
   </div>
 
 
-  <!-- SCHOOL VISIT STATUS LEGEND -->
+  <!-- =====================================
+       SCHOOL VISIT STATUS LEGEND
+       ===================================== -->
+
   <div id="map-legend">
 
     <div class="legend-title">
@@ -108,33 +132,54 @@
     </div>
 
     <div class="legend-item">
+
       <span class="legend-dot legend-green"></span>
+
       <span>Visited within 30 days</span>
+
     </div>
 
     <div class="legend-item">
+
       <span class="legend-dot legend-yellow"></span>
+
       <span>Visited 31–60 days ago</span>
+
     </div>
 
     <div class="legend-item">
+
       <span class="legend-dot legend-red"></span>
+
       <span>Last visit more than 60 days ago</span>
+
     </div>
 
     <div class="legend-item">
+
       <span class="legend-dot legend-gray"></span>
+
       <span>Never visited</span>
+
     </div>
 
   </div>
 
 
-  <!-- SUPABASE -->
+  <!-- =====================================
+       SUPABASE JAVASCRIPT
+       ===================================== -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- WEBSITE JAVASCRIPT -->
+
+  <!-- =====================================
+       WEBSITE JAVASCRIPT
+       ===================================== -->
+
   <script src="./script.js"></script>
 
 </body>
+
 </html>
+```
