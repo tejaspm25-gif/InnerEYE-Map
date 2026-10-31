@@ -6,13 +6,13 @@
 // Do NOT add /rest/v1 at the end.
 
 const SUPABASE_URL =
-  "https://YOUR-PROJECT.supabase.co";
+  "https://fjjsmeriudjzkmwrbqdd.supabase.co";
 
 // Enter your Supabase publishable key.
 // Never use a secret or service_role key.
 
 const SUPABASE_KEY =
-  "YOUR_SUPABASE_PUBLISHABLE_KEY";
+  "sb_publishable_g5YAtmp8uuo5NNWBBn8rDw_t-bYykHw";
 
 const db = supabase.createClient(
   SUPABASE_URL,
